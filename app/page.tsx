@@ -1,5 +1,5 @@
-import Image from "next/image";
+"use client";
 
 export default function Home() {
-  return <div className="min-h-screen"></div>;
+  return <h1>Home</h1>;
 }
