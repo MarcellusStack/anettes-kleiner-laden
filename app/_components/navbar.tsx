@@ -7,7 +7,7 @@ export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 flex justify-center p-4 z-50">
+    <nav className="fixed top-0 left-0 right-0 flex justify-center p-4 z-50 ">
       <motion.div
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -18,11 +18,11 @@ export const Navbar = () => {
           mass: 0.8,
           delay: 1.4,
         }}
-        className="relative w-full max-w-2xl"
+        className="relative w-full max-w-2xl bg-white"
       >
         <div className="border border-gray-300 rounded-lg  p-4">
           <div className="flex justify-between items-center">
-            <h2 className="text-xl font-semibold text-soft-black">
+            <h2 className="text-xl font-semibold text-soft-black font-sans">
               Anettes kleiner Laden
             </h2>
             <motion.button
@@ -71,7 +71,7 @@ export const Navbar = () => {
                   mass: 0.8,
                   opacity: { duration: 0.2 },
                 }}
-                className="overflow-hidden relative"
+                className="overflow-hidden relative "
               >
                 <div className="relative overflow-hidden">
                   <motion.div
@@ -164,7 +164,7 @@ export const Navbar = () => {
                         mass: 0.8,
                         delay: 0.2,
                       }}
-                      className="text-center text-soft-black font-bold hover:text-primary text-2xl"
+                      className="text-center text-soft-black font-bold hover:text-primary text-2xl font-sans"
                     >
                       Produkte
                     </motion.a>
@@ -180,7 +180,7 @@ export const Navbar = () => {
                         mass: 0.8,
                         delay: 0.3,
                       }}
-                      className="text-center text-soft-black font-bold hover:text-primary text-2xl"
+                      className="text-center text-soft-black font-bold hover:text-primary text-2xl font-sans"
                     >
                       Meine Arbeit
                     </motion.a>
@@ -196,7 +196,7 @@ export const Navbar = () => {
                         mass: 0.8,
                         delay: 0.4,
                       }}
-                      className="text-center text-soft-black font-bold hover:text-primary text-2xl"
+                      className="text-center text-soft-black font-bold hover:text-primary text-2xl font-sans"
                     >
                       Kontakt
                     </motion.a>
