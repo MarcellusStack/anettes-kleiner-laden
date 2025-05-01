@@ -8,8 +8,6 @@
 }
 
 @theme {
-  --color-primary: #00dc96;
-  --color-secondary: #14b585;
-  --color-tertiary: #a8e5d0;
-  --color-quaternary: #e8f8f5;
+  --color-primary: #14c38e;
+  --color-soft-black: #1a1a1a;
 }

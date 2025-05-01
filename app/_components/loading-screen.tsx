@@ -21,7 +21,7 @@ export const LoadingScreen = () => {
         mass: 0.8,
         delay: 1.3,
       }}
-      className="bg-secondary min-h-screen grid place-items-center absolute inset-0"
+      className="bg-primary min-h-screen grid place-items-center absolute inset-0"
     >
       <motion.h1 className="text-3xl text-white font-bold font-sans flex flex-row items-center gap-1">
         <motion.span
