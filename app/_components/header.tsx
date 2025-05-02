@@ -1,5 +1,6 @@
 import React from "react";
 
+
 export const Header = () => {
   return (
     <header className="flex flex-col items-center justify-center min-h-[calc(100vh-113.33px)]">
@@ -8,10 +9,7 @@ export const Header = () => {
           Personalisierte <span className="text-primary">Dekorationen</span>
         </span>
         <span className="font-sans text-soft-black">
-          aus <span className="text-primary">Acryl</span>
-        </span>
-        <span className="font-sans text-soft-black">
-          & <span className="text-primary">Holz</span>
+          aus <span className="text-primary">Keraflott</span>
         </span>
       </h1>
     </header>

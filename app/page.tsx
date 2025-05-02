@@ -7,6 +7,14 @@ export default function Home() {
     <>
       <Navbar />
       <Header />
+      <div className="h-screen"></div>
+      <div className="h-screen"></div>
+      <div className="h-screen"></div>
+      <div className="h-screen"></div>
+      <div className="h-screen"></div>
+      <div className="h-screen"></div>
+      <div className="h-screen"></div>
+      <div className="h-screen"></div>
     </>
   );
 }
