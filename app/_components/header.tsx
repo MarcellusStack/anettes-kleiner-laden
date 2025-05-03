@@ -19,32 +19,32 @@ export const Header = () => {
     mass: 0.8,
   });
 
-  // Updated transform ranges to include end state
+  // Updated transform ranges for smoother transition
   const rightRotation = useTransform(
     smoothProgress,
-    [0, 0.3, 0.7, 1],
-    [12, 0, 0, -12]
+    [0, 0.25, 0.5, 0.75, 1],
+    [12, 0, 0, -6, -12]
   );
   const leftRotation = useTransform(
     smoothProgress,
-    [0, 0.3, 0.7, 1],
-    [-12, 0, 0, 12]
+    [0, 0.25, 0.5, 0.75, 1],
+    [-12, 0, 0, 6, 12]
   );
   const blurValue = useTransform(
     smoothProgress,
-    [0, 0.3, 0.7, 1],
-    [5, 0, 0, 5]
+    [0, 0.25, 0.5, 0.75, 1],
+    [5, 0, 0, 2.5, 5]
   );
   const yOffset = useTransform(
     smoothProgress,
-    [0, 0.3, 0.7, 1],
-    [100, -50, -50, 100]
+    [0, 0.25, 0.5, 0.75, 1],
+    [100, -50, -50, 25, 100]
   );
 
   return (
     <header
       ref={headerRef}
-      className="flex flex-col items-center justify-center min-h-[calc(100vh-113.33px)] gap-10 mt-10"
+      className="flex flex-col items-center justify-center min-h-[calc(100vh-113.33px)] gap-10 md:mt-10"
     >
       <motion.div
         className="absolute top-[75%] -z-10 right-1/7 w-[300px] h-[400px] "

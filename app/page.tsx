@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <Navbar />
       <Header />
-      <div className="h-screen" />
+      <div className="h-[50vh] md:h-screen" />
       <ProductSequence />
       <div className="h-screen"></div>
     </>
