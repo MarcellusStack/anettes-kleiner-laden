@@ -8,8 +8,9 @@ export default function Home() {
   return (
     <>
       <Navbar />
+      <div className="md:mt-36" />
       <Header />
-      <div className="h-screen" />
+      <div className="md:mt-36" />
       <ProductSequence />
       <div className="h-screen"></div>
       <Marquee
