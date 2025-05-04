@@ -7,19 +7,19 @@ import { MyWork } from "./_components/my-work";
 
 export default function Home() {
   return (
-    <>
+    <div className="overflow-hidden">
       <Navbar />
-      <div className="md:mt-36" />
-      <Header />
-      <div className="md:mt-36" />
-      <ProductSequence />
       <div className="mt-36" />
+      <Header />
+      <div className="mt-36" />
+      <ProductSequence />
+      <div className="mt-16 md:mt-36" />
       <MyWork />
       <div className="mt-36" />
       <Marquee
         text1="Hello World lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
         text2="Hello World lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos."
       />
-    </>
+    </div>
   );
 }

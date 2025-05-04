@@ -2,8 +2,8 @@ import React from "react";
 
 export const MyWork = () => {
   return (
-    <section className="flex flex-col items-center gap-10 container mx-auto px-10">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-sans text-primary">
+    <section className="flex flex-col items-center gap-5 md:gap-10 container mx-auto px-10">
+      <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-sans text-primary">
         Meine Arbeit
       </h2>
       <p className="text-center text-soft-black font-sans max-w-prose text-xl">
