@@ -2,8 +2,8 @@ import { motion } from "motion/react";
 
 export const Marquee = ({ text1, text2 }: { text1: string; text2: string }) => {
   return (
-    <div className="relative w-[110%] md:w-[120%] -ml-[5%] md:-ml-[10%]">
-      <div className="bg-white border-2 border-primary overflow-hidden whitespace-nowrap relative rotate-3 md:rotate-6 py-3 md:py-5">
+    <div className="relative w-full md:w-[120%] md:-ml-[10%]">
+      <div className="bg-white border-2 border-primary overflow-hidden whitespace-nowrap relative rotate-2 md:rotate-6 py-3 md:py-5">
         <motion.div
           initial={{ x: "-100%" }}
           animate={{ x: "100%" }}
@@ -20,7 +20,7 @@ export const Marquee = ({ text1, text2 }: { text1: string; text2: string }) => {
         </motion.div>
       </div>
 
-      <div className="bg-primary overflow-hidden whitespace-nowrap relative -rotate-2 md:-rotate-4 -mt-12 md:-mt-16 py-3 md:py-5">
+      <div className="bg-primary overflow-hidden whitespace-nowrap relative mt-6 md:-mt-16 -rotate-2 md:-rotate-4 py-3 md:py-5">
         <motion.div
           initial={{ x: "100%" }}
           animate={{ x: "-100%" }}
