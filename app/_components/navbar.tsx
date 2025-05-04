@@ -18,7 +18,7 @@ export const Navbar = () => {
           mass: 0.8,
           delay: 1.4,
         }}
-        className="relative w-full max-w-2xl bg-white"
+        className="relative w-full max-w-2xl bg-white rounded-lg"
       >
         <div className="border border-gray-300 rounded-lg  p-4">
           <div className="flex justify-between items-center">

@@ -1,7 +1,9 @@
 import React, { useRef } from "react";
 import { IconArrowDown } from "@tabler/icons-react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import Image from "next/image";
+
+
 
 export const Header = () => {
   const headerRef = useRef(null);
