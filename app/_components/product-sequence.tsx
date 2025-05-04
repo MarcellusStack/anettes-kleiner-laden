@@ -1,10 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useMotionValueEvent,
-} from "motion/react";
+import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import Image from "next/image";
 
 export const ProductSequence = () => {
@@ -72,7 +67,7 @@ export const ProductSequence = () => {
   return (
     <section
       ref={containerRef}
-      className="relative h-screen w-full overflow-hidden grid place-items-center bg-primary"
+      className="relative h-[450px] md:h-screen w-full overflow-hidden grid place-items-center bg-primary"
     >
       {!isLoaded && (
         <motion.div
