@@ -3,8 +3,6 @@ import { IconArrowDown } from "@tabler/icons-react";
 import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import Image from "next/image";
 
-
-
 export const Header = () => {
   const headerRef = useRef(null);
 
@@ -20,6 +18,31 @@ export const Header = () => {
     damping: 25,
     mass: 0.8,
   });
+
+  // Snappier spring settings for shapes
+  const shapeSpringConfig = {
+    stiffness: 100,
+    damping: 15,
+    mass: 0.1,
+    restSpeed: 0.5,
+    restDelta: 0.01,
+  };
+
+  // Create spring animations for each shape
+  const shape1Y = useSpring(
+    useTransform(smoothProgress, [0, 1], ["-30px", "30px"]),
+    shapeSpringConfig
+  );
+
+  const shape2Y = useSpring(
+    useTransform(smoothProgress, [0, 1], ["40px", "-40px"]),
+    shapeSpringConfig
+  );
+
+  const shape3Y = useSpring(
+    useTransform(smoothProgress, [0, 1], ["-20px", "20px"]),
+    shapeSpringConfig
+  );
 
   // Keep blur until we start scrolling more
   const blurValue = useTransform(smoothProgress, [0, 0.4], [2.5, 0]);
@@ -55,12 +78,41 @@ export const Header = () => {
     rotate: useTransform(smoothProgress, [0, 1], [10, 30]),
   };
 
+  // Add opacity animation that fades out at the end
+  const opacityValue = useTransform(smoothProgress, [0, 0.8, 1], [1, 1, 0]);
+
   return (
     <header
       ref={headerRef}
-      className="flex flex-col items-center justify-center min-h-[calc(100vh-113.33px)] gap-10"
+      className="relative flex flex-col items-center justify-center min-h-[calc(100vh-113.33px)] gap-10 md:mt-10 overflow-hidden"
     >
-      <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-sans flex flex-col items-center text-center">
+      {/* Decorative background shapes */}
+      <motion.div
+        className=" absolute top-[10%] right-[15%] w-[500px] h-[500px] rounded-full bg-primary/20 blur-3xl"
+        style={{
+          y: shape1Y,
+          scale: useTransform(smoothProgress, [0, 0.5], [0.8, 1]),
+          opacity: useTransform(smoothProgress, [0, 0.2], [0.8, 0.4]),
+        }}
+      />
+      <motion.div
+        className="absolute bottom-[20%] left-[10%] w-[400px] h-[400px] rounded-lg bg-primary/30 blur-3xl rotate-12"
+        style={{
+          y: shape2Y,
+          scale: useTransform(smoothProgress, [0.2, 0.7], [0.8, 1]),
+          opacity: useTransform(smoothProgress, [0.2, 0.4], [0.8, 0.4]),
+        }}
+      />
+      <motion.div
+        className="absolute top-[40%] left-[20%] w-[600px] h-[600px] rounded-full bg-primary/10 blur-3xl"
+        style={{
+          y: shape3Y,
+          scale: useTransform(smoothProgress, [0.4, 0.9], [0.8, 1]),
+          opacity: useTransform(smoothProgress, [0.4, 0.6], [0.8, 0.4]),
+        }}
+      />
+
+      <h1 className="relative text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-sans flex flex-col items-center text-center">
         <span className="text-soft-black font-sans">
           Personalisierte <span className="text-primary">Kreationen</span>
         </span>
@@ -126,15 +178,21 @@ export const Header = () => {
             y: card1Transform.y,
             rotate: card1Transform.rotate,
             filter: useTransform(blurValue, (value) => `blur(${value}px)`),
+            opacity: opacityValue,
           }}
         >
-          <Image
-            src="/header-1.webp"
-            alt="Product-1"
-            fill
-            className="object-cover"
-          />
+          <div className="relative w-full h-full p-2 bg-white rounded-xl shadow-[4px_4px_10px_rgba(0,0,0,0.1)]">
+            <div className="relative w-full h-full rounded-lg overflow-hidden border-[6px] border-white shadow-inner">
+              <Image
+                src="/header-1.webp"
+                alt="Product-1"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
         </motion.div>
+
         <motion.div
           className="absolute top-0 left-0 w-full h-full rounded-xl overflow-hidden shadow-lg"
           style={{
@@ -142,15 +200,21 @@ export const Header = () => {
             y: card2Transform.y,
             rotate: card2Transform.rotate,
             filter: useTransform(blurValue, (value) => `blur(${value}px)`),
+            opacity: opacityValue,
           }}
         >
-          <Image
-            src="/header-2.webp"
-            alt="Product-2"
-            fill
-            className="object-cover"
-          />
+          <div className="relative w-full h-full p-2 bg-white rounded-xl shadow-[4px_4px_10px_rgba(0,0,0,0.1)]">
+            <div className="relative w-full h-full rounded-lg overflow-hidden border-[6px] border-white shadow-inner">
+              <Image
+                src="/header-2.webp"
+                alt="Product-2"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
         </motion.div>
+
         <motion.div
           className="absolute top-0 left-0 w-full h-full rounded-xl overflow-hidden shadow-lg"
           style={{
@@ -158,15 +222,21 @@ export const Header = () => {
             y: card3Transform.y,
             rotate: card3Transform.rotate,
             filter: useTransform(blurValue, (value) => `blur(${value}px)`),
+            opacity: opacityValue,
           }}
         >
-          <Image
-            src="/header-1.webp"
-            alt="Product-3"
-            fill
-            className="object-cover"
-          />
+          <div className="relative w-full h-full p-2 bg-white rounded-xl shadow-[4px_4px_10px_rgba(0,0,0,0.1)]">
+            <div className="relative w-full h-full rounded-lg overflow-hidden border-[6px] border-white shadow-inner">
+              <Image
+                src="/header-1.webp"
+                alt="Product-3"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
         </motion.div>
+
         <motion.div
           className="absolute top-0 left-0 w-full h-full rounded-xl overflow-hidden shadow-lg"
           style={{
@@ -174,15 +244,21 @@ export const Header = () => {
             y: card4Transform.y,
             rotate: card4Transform.rotate,
             filter: useTransform(blurValue, (value) => `blur(${value}px)`),
+            opacity: opacityValue,
           }}
         >
-          <Image
-            src="/header-2.webp"
-            alt="Product-4"
-            fill
-            className="object-cover"
-          />
+          <div className="relative w-full h-full p-2 bg-white rounded-xl shadow-[4px_4px_10px_rgba(0,0,0,0.1)]">
+            <div className="relative w-full h-full rounded-lg overflow-hidden border-[6px] border-white shadow-inner">
+              <Image
+                src="/header-2.webp"
+                alt="Product-4"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
         </motion.div>
+
         <motion.div
           className="absolute top-0 left-0 w-full h-full rounded-xl overflow-hidden shadow-lg"
           style={{
@@ -190,14 +266,19 @@ export const Header = () => {
             y: card5Transform.y,
             rotate: card5Transform.rotate,
             filter: useTransform(blurValue, (value) => `blur(${value}px)`),
+            opacity: opacityValue,
           }}
         >
-          <Image
-            src="/header-1.webp"
-            alt="Product-5"
-            fill
-            className="object-cover"
-          />
+          <div className="relative w-full h-full p-2 bg-white rounded-xl shadow-[4px_4px_10px_rgba(0,0,0,0.1)]">
+            <div className="relative w-full h-full rounded-lg overflow-hidden border-[6px] border-white shadow-inner">
+              <Image
+                src="/header-1.webp"
+                alt="Product-5"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
         </motion.div>
       </div>
     </header>
