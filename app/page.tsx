@@ -4,6 +4,7 @@ import { Header } from "./_components/header";
 import { ProductSequence } from "./_components/product-sequence";
 import { Marquee } from "./_components/marquee";
 import { MyWork } from "./_components/my-work";
+import { Footer } from "./_components/footer";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
         variant="primary"
       />
       <div className="mt-36" />
+      <Footer />
     </div>
   );
 }
