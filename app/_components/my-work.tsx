@@ -94,7 +94,7 @@ export const MyWork = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative flex flex-col items-center gap-5 md:gap-10 container mx-auto px-10 min-h-screen overflow-hidden pb-10"
+      className="relative flex flex-col items-center gap-5 md:gap-10 container mx-auto px-4 md:px-10 min-h-[50vh] md:min-h-screen overflow-hidden pb-10"
     >
       {/* Decorative background shapes with enhanced animations */}
       <motion.div
@@ -127,7 +127,7 @@ export const MyWork = () => {
         style={{ y: yTransform, zIndex: 1 }}
       >
         <motion.div
-          className="relative w-full bg-white rounded-lg shadow-lg p-8 transform rotate-1"
+          className="relative w-full bg-white rounded-lg shadow-lg p-4 md:p-8 transform rotate-1"
           style={{
             backgroundImage: `
               linear-gradient(#e5e7eb 1px, transparent 1px),
@@ -143,8 +143,8 @@ export const MyWork = () => {
           <div className="absolute left-8 top-2/3 w-6 h-6 rounded-full bg-gray-100 shadow-inner border border-gray-200" />
 
           {/* Title with underline animation */}
-          <div className="relative mb-8">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-hand text-primary flex flex-wrap justify-center">
+          <div className="relative mb-4 md:mb-8">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold font-hand text-primary flex flex-wrap justify-center">
               {titleLetters.map((letter, index) => (
                 <motion.span
                   key={index}
@@ -152,17 +152,17 @@ export const MyWork = () => {
                   style={{
                     opacity: useTransform(
                       smoothProgress,
-                      [0, 0.2 + index * 0.02, 0.4 + index * 0.02],
+                      [0, 0.1 + index * 0.01, 0.2 + index * 0.01],
                       [0, 0, 1]
                     ),
                     rotate: useTransform(
                       smoothProgress,
-                      [0, 0.2 + index * 0.02, 0.4 + index * 0.02],
+                      [0, 0.1 + index * 0.01, 0.2 + index * 0.01],
                       [-20, -20, 0]
                     ),
                     y: useTransform(
                       smoothProgress,
-                      [0, 0.2 + index * 0.02, 0.4 + index * 0.02],
+                      [0, 0.1 + index * 0.01, 0.2 + index * 0.01],
                       ["20px", "20px", "0px"]
                     ),
                   }}
@@ -211,8 +211,8 @@ export const MyWork = () => {
             </motion.div>
           </div>
 
-          {/* Paragraph with original letter animations */}
-          <div className="text-center text-soft-black font-hand max-w-prose text-2xl leading-[2.5] flex flex-wrap justify-center">
+          {/* Paragraph with adjusted letter animations */}
+          <div className="text-center text-soft-black font-hand text-lg md:text-2xl leading-[2] md:leading-[2.5] flex flex-wrap justify-center">
             {paragraphLetters.map((letter, index) => (
               <motion.span
                 key={index}
@@ -220,17 +220,17 @@ export const MyWork = () => {
                 style={{
                   opacity: useTransform(
                     smoothProgress,
-                    [0.3 + index * 0.0005, 0.5 + index * 0.0005],
+                    [0.2 + index * 0.0003, 0.3 + index * 0.0003],
                     [0, 1]
                   ),
                   rotate: useTransform(
                     smoothProgress,
-                    [0.3 + index * 0.0005, 0.5 + index * 0.0005],
+                    [0.2 + index * 0.0003, 0.3 + index * 0.0003],
                     [-10, 0]
                   ),
                   y: useTransform(
                     smoothProgress,
-                    [0.3 + index * 0.0005, 0.5 + index * 0.0005],
+                    [0.2 + index * 0.0003, 0.3 + index * 0.0003],
                     ["15px", "0px"]
                   ),
                 }}
