@@ -243,14 +243,14 @@ export const ProductSequence = () => {
                 </motion.svg>
               </motion.div>
 
-              <div className="w-full h-2 bg-white/20 rounded-full overflow-hidden">
+              <div className="w-full h-2 bg-primary/20 rounded-full overflow-hidden">
                 <motion.div
-                  className="h-full bg-white rounded-full"
+                  className="h-full bg-primary rounded-full"
                   style={{ width: `${progressWidth}%` }}
                 />
               </div>
             </div>
-            <p className="text-white text-lg flex items-center font-sans">
+            <p className="text-primary text-lg flex items-center font-sans">
               Bilder werden geladen
               <motion.span {...loadingDots} className="inline-block ml-[2px]">
                 .
