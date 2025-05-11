@@ -170,7 +170,7 @@ export const Header = () => {
           <IconArrowDown size={32} />
         </motion.div>
       </div>
-      <div className="relative w-[300px] h-[400px] mt-10">
+      <div className="relative w-[200px] sm:w-[250px] md:w-[300px] h-[300px] sm:h-[350px] md:h-[400px] mt-10">
         <motion.div
           className="absolute top-0 left-0 w-full h-full rounded-xl overflow-hidden shadow-lg"
           style={{
