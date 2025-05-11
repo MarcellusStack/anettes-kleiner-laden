@@ -135,7 +135,7 @@ export const ProductSequence = () => {
   ];
 
   return (
-    <section ref={containerRef} className="relative w-full bg-primary">
+    <section ref={containerRef} className="relative w-full ">
       <motion.div
         className="absolute top-20 left-[20%] w-64 h-64 rounded-full bg-primary/30 blur-3xl"
         style={{
@@ -286,7 +286,7 @@ export const ProductSequence = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`${feature.className} ${feature.bgColor} p-6 rounded-3xl transform rotate-1`}
+                  className={`${feature.className}  p-6 rounded-3xl transform rotate-1`}
                   style={{
                     backgroundImage: `
                       linear-gradient(#e5e7eb 1px, transparent 1px),
@@ -300,13 +300,13 @@ export const ProductSequence = () => {
                   <div className="absolute left-8 top-1/3 w-6 h-6 rounded-full bg-gray-100 shadow-inner border border-gray-200" />
                   <div className="absolute left-8 top-2/3 w-6 h-6 rounded-full bg-gray-100 shadow-inner border border-gray-200" />
 
-                  <h2 className="text-soft-black text-3xl font-medium mb-4 font-hand">
+                  <h2 className="text-primary text-3xl font-medium mb-4 font-hand">
                     {feature.title}
                   </h2>
                   <div
                     className={`relative ${feature.imageHeight} rounded-2xl overflow-hidden`}
                   >
-                    <div className="relative w-full h-full p-2 bg-white rounded-xl shadow-[4px_4px_10px_rgba(0,0,0,0.1)]">
+                    <div className="relative w-full h-full p-4 bg-white rounded-xl shadow-[4px_4px_10px_rgba(0,0,0,0.1)]">
                       <div className="relative w-full h-full rounded-lg overflow-hidden border-[6px] border-white shadow-inner">
                         <Image
                           src={
