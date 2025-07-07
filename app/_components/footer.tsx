@@ -177,10 +177,6 @@ export const Footer = () => {
         <div className="flex items-center space-x-4">
           <span>© Anettes kleiner Laden 2025</span>
         </div>
-
-        <div>
-          <span>Website made by marcellusstack</span>
-        </div>
       </motion.div>
     </footer>
   );

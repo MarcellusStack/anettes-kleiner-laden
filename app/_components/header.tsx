@@ -112,12 +112,15 @@ export const Header = () => {
         }}
       />
 
-      <h1 className="relative text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-sans flex flex-col items-center text-center">
+      <h1 className="relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-sans flex flex-col items-center text-center">
         <span className="text-soft-black font-sans">
-          Personalisierte <span className="text-primary">Kreationen</span>
+          Handgemachte <span className="text-primary">Dekoration</span>
         </span>
         <span className="font-sans text-soft-black">
           aus <span className="text-primary">Keraflott</span>
+        </span>
+        <span className="font-sans text-soft-black">
+          mit Liebe <span className="text-primary">gestaltet</span>
         </span>
       </h1>
       <button className="bg-primary text-white border-primary font-sans text-2xl px-4 py-2 rounded-md">

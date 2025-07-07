@@ -1,11 +1,5 @@
-import React, { useRef, useEffect } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useSpring,
-  useMotionValue,
-} from "motion/react";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import { IconPencil } from "@tabler/icons-react";
 
 export const MyWork = () => {
@@ -50,52 +44,21 @@ export const MyWork = () => {
   );
 
   // Split texts
-  const title = "Meine Arbeit";
+  const title = "Handmade mit Herz";
   const titleLetters = title.split("");
 
-  const paragraph =
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique quasi sapiente ducimus incidunt ex, sed quibusdam ullam provident. A, ipsum ipsa pariatur consectetur, nam fuga inventore quo id aperiam nesciunt earum! Magnam atque deleniti beatae molestiae dolore deserunt provident velit doloribus iste blanditiis nisi repellat explicabo, repudiandae distinctio. Ipsum id culpa consequuntur, dolore, sit fuga voluptatum et velit iure ipsam ratione aliquid laboriosam deserunt ea similique inventore dignissimos nisi cumque veritatis eligendi magnam neque! Blanditiis at vero quos porro doloremque, nisi ea fugit tempore? Neque dolore quidem illo magnam et dolores dignissimos at quibusdam praesentium, odio debitis fuga quis adipisci!";
-  const paragraphLetters = paragraph.split("");
-
   const yTransform = useTransform(smoothProgress, [0, 1], ["50px", "0px"]);
-
-  const pathRef = useRef(null);
-  const progressX = useMotionValue(0);
-  const progressY = useMotionValue(0);
-
-  // Create smooth spring animation for the underline
-  const pathLength = useSpring(
-    useTransform(smoothProgress, [0.2, 0.4], [0, 1]),
-    {
-      stiffness: 100,
-      damping: 20,
-      mass: 0.5,
-    }
-  );
-
-  // Update pen position based on path progress with clamping
-  useEffect(() => {
-    const pathElement = pathRef.current;
-    if (!pathElement) return;
-
-    const totalLength = pathElement.getTotalLength();
-
-    const unsubscribe = pathLength.onChange((latest) => {
-      // Clamp the value between 0 and 1
-      const clampedLatest = Math.min(Math.max(latest, 0), 1);
-      const point = pathElement.getPointAtLength(clampedLatest * totalLength);
-      progressX.set(point.x);
-      progressY.set(point.y);
-    });
-
-    return unsubscribe;
-  }, [pathLength, progressX, progressY]);
 
   return (
     <section
       ref={sectionRef}
       className="relative flex flex-col items-center gap-5 md:gap-10 container mx-auto px-4 md:px-10 min-h-[50vh] md:min-h-screen overflow-hidden pb-10"
     >
+      <h2 className="relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-sans text-center">
+        <span className="text-soft-black font-sans">
+          Meine <span className="text-primary">Arbeit</span>
+        </span>
+      </h2>
       {/* Decorative background shapes with enhanced animations */}
       <motion.div
         className="absolute top-20 left-[20%] w-64 h-64 rounded-full bg-primary/30 blur-3xl"
@@ -128,6 +91,10 @@ export const MyWork = () => {
       >
         <motion.div
           className="relative w-full bg-white rounded-lg shadow-lg p-4 md:p-8 transform rotate-1"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           style={{
             backgroundImage: `
               linear-gradient(#e5e7eb 1px, transparent 1px),
@@ -144,101 +111,216 @@ export const MyWork = () => {
 
           {/* Title with underline animation */}
           <div className="relative mb-4 md:mb-8">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold font-hand text-primary flex flex-wrap justify-center">
+            <motion.h2
+              className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold font-hand text-primary text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+            >
               {titleLetters.map((letter, index) => (
                 <motion.span
                   key={index}
                   className="inline-block relative"
-                  style={{
-                    opacity: useTransform(
-                      smoothProgress,
-                      [0, 0.1 + index * 0.01, 0.2 + index * 0.01],
-                      [0, 0, 1]
-                    ),
-                    rotate: useTransform(
-                      smoothProgress,
-                      [0, 0.1 + index * 0.01, 0.2 + index * 0.01],
-                      [-20, -20, 0]
-                    ),
-                    y: useTransform(
-                      smoothProgress,
-                      [0, 0.1 + index * 0.01, 0.2 + index * 0.01],
-                      ["20px", "20px", "0px"]
-                    ),
+                  initial={{ opacity: 0, y: 20, rotate: -10 }}
+                  whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{
+                    duration: 0.3,
+                    delay: 0.2 + index * 0.03,
+                    ease: "easeOut",
                   }}
                 >
                   {letter === " " ? "\u00A0" : letter}
                 </motion.span>
               ))}
-            </h2>
+            </motion.h2>
 
-            {/* Animated underline with pen */}
-            <svg
-              className="absolute -bottom-2 left-0 w-full"
-              height="10"
-              width="100%"
+            {/* Realistic scribbled underline */}
+            <motion.svg
+              className="absolute -bottom-2 left-1/2 transform -translate-x-1/2"
+              width="350"
+              height="20"
+              viewBox="0 0 350 20"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.2, delay: 0.6 }}
             >
               <motion.path
-                ref={pathRef}
-                d="M 0 5 L 1000 5"
+                d="M 5 12 Q 20 8 35 10 T 65 9 Q 85 7 105 11 T 135 10 Q 155 8 175 12 T 205 11 Q 225 9 245 13 T 275 12 Q 295 10 315 14 T 345 13"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="2.5"
                 className="text-primary"
                 fill="none"
                 strokeLinecap="round"
+                strokeLinejoin="round"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{
+                  duration: 1.0,
+                  delay: 0.7,
+                  ease: "easeInOut",
+                }}
                 style={{
-                  pathLength,
+                  filter: "url(#roughPaper)",
                 }}
               />
-            </svg>
 
-            {/* Pen following the underline */}
+              {/* Add some texture to make it look more hand-drawn */}
+              <defs>
+                <filter id="roughPaper">
+                  <feTurbulence
+                    baseFrequency="0.04"
+                    numOctaves="5"
+                    result="noise"
+                    seed="1"
+                  />
+                  <feDisplacementMap
+                    in="SourceGraphic"
+                    in2="noise"
+                    scale="0.5"
+                  />
+                </filter>
+              </defs>
+
+              {/* Small pen stroke marks for extra realism */}
+              <motion.circle
+                cx="15"
+                cy="10"
+                r="0.5"
+                fill="currentColor"
+                className="text-primary opacity-30"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 0.3 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.1, delay: 0.9 }}
+              />
+              <motion.circle
+                cx="180"
+                cy="11"
+                r="0.3"
+                fill="currentColor"
+                className="text-primary opacity-40"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 0.4 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.1, delay: 1.3 }}
+              />
+              <motion.circle
+                cx="320"
+                cy="13"
+                r="0.4"
+                fill="currentColor"
+                className="text-primary opacity-35"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 0.35 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.1, delay: 1.6 }}
+              />
+            </motion.svg>
+
+            {/* Animated pen that follows the underline */}
             <motion.div
               className="absolute text-primary"
               style={{
-                x: progressX,
-                y: progressY,
-                translateY: -24,
-                translateX: 0,
-                opacity: useTransform(
-                  pathLength,
-                  [0, 0.01, 0.99, 1],
-                  [0, 1, 1, 0]
-                ), // Fade pen at start/end
+                left: "50%",
+                bottom: "-30px",
               }}
+              initial={{ opacity: 0, x: -175, rotate: -15 }}
+              whileInView={{
+                opacity: [0, 1, 1, 0],
+                x: 175,
+                rotate: 15,
+                transition: {
+                  duration: 1.0,
+                  delay: 0.7,
+                  ease: "easeInOut",
+                  opacity: {
+                    times: [0, 0.1, 0.9, 1],
+                    duration: 1.0,
+                  },
+                },
+              }}
+              viewport={{ once: true, margin: "-100px" }}
             >
-              <IconPencil size={24} />
+              <IconPencil size={20} />
             </motion.div>
           </div>
 
-          {/* Paragraph with adjusted letter animations */}
-          <div className="text-center text-soft-black font-hand text-lg md:text-2xl leading-[2] md:leading-[2.5] flex flex-wrap justify-center">
-            {paragraphLetters.map((letter, index) => (
-              <motion.span
-                key={index}
-                className="inline-block"
-                style={{
-                  opacity: useTransform(
-                    smoothProgress,
-                    [0.2 + index * 0.0003, 0.3 + index * 0.0003],
-                    [0, 1]
-                  ),
-                  rotate: useTransform(
-                    smoothProgress,
-                    [0.2 + index * 0.0003, 0.3 + index * 0.0003],
-                    [-10, 0]
-                  ),
-                  y: useTransform(
-                    smoothProgress,
-                    [0.2 + index * 0.0003, 0.3 + index * 0.0003],
-                    ["15px", "0px"]
-                  ),
-                }}
-              >
-                {letter === " " ? "\u00A0" : letter}
-              </motion.span>
-            ))}
-          </div>
+          {/* Content with simple fade-up animation */}
+          <motion.div
+            className="text-center text-soft-black font-hand text-lg md:text-2xl leading-[2] md:leading-[2.5] space-y-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <motion.div
+              className="space-y-2"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.4, delay: 0.4 }}
+            >
+              <p className="font-semibold">Jedes Stück wird von mir:</p>
+              <ul className="list-disc list-inside space-y-1 text-left max-w-2xl mx-auto">
+                <motion.li
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.3, delay: 0.5 }}
+                >
+                  in Handarbeit gegossen und geschliffen und versiegelt
+                </motion.li>
+                <motion.li
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.3, delay: 0.6 }}
+                >
+                  liebevoll gestaltet, bemalt oder dekoriert
+                </motion.li>
+                <motion.li
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.3, delay: 0.7 }}
+                >
+                  als Einzelstück oder in kleinen Serien gefertigt
+                </motion.li>
+              </ul>
+            </motion.div>
+
+            <motion.div
+              className="space-y-2"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.4, delay: 0.8 }}
+            >
+              <p className="font-semibold">Vielfältig & individuell:</p>
+              <ul className="list-disc list-inside space-y-1 text-left max-w-2xl mx-auto">
+                <motion.li
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.3, delay: 0.9 }}
+                >
+                  als stilvolle Dekoration für Zuhause
+                </motion.li>
+                <motion.li
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.3, delay: 1.0 }}
+                >
+                  als Geschenkideen für besondere Anlässe
+                </motion.li>
+              </ul>
+            </motion.div>
+          </motion.div>
         </motion.div>
       </motion.div>
     </section>

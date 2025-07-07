@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import {
   motion,
   useScroll,
@@ -7,11 +7,16 @@ import {
   useTransform,
 } from "motion/react";
 import Image from "next/image";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper modules
+import { EffectCards, Autoplay } from "swiper/modules";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-cards";
 
 export const ProductSequence = () => {
   const containerRef = useRef(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isLoaded, setIsLoaded] = useState(false);
   const [hasLoaded, setHasLoaded] = useState(false);
   const [progressWidth, setProgressWidth] = useState(0);
 
@@ -41,8 +46,6 @@ export const ProductSequence = () => {
     { stiffness: 100, damping: 15 }
   );
 
-  const images = ["/header-3.webp", "/header-4.avif", "/header-5.avif"];
-
   // Animation configs
   const loadingDots = {
     animate: {
@@ -51,7 +54,7 @@ export const ProductSequence = () => {
     transition: {
       duration: 2,
       repeat: Infinity,
-      repeatType: "loop",
+      repeatType: "loop" as const,
       times: [0, 0.2, 0.8, 1],
     },
   };
@@ -64,7 +67,7 @@ export const ProductSequence = () => {
       rotate: {
         duration: 0.5,
         repeat: Infinity,
-        repeatType: "loop",
+        repeatType: "loop" as const,
       },
     },
   };
@@ -73,69 +76,38 @@ export const ProductSequence = () => {
     if (hasLoaded) return;
     setProgressWidth(latest * 100);
     if (latest >= 0.75) {
-      setIsLoaded(true);
       setHasLoaded(true);
     }
   });
 
-  useEffect(() => {
-    if (!isLoaded) return;
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) =>
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [isLoaded]);
+  const images = ["/header-3.webp", "/header-4.avif", "/header-5.avif"];
 
   const features = [
-    // Row 1
     {
       title: "Handgefertigt",
       description:
-        "Jedes Keraflott wird mit Liebe von Hand gefertigt und ist ein echtes Unikat",
+        "Ich fertige mit viel Liebe zum Detail handgemachte Dekorationen aus Keraflott - einem hochwertigen Gießpulver, das sich perfekt für feine, individuelle Bastelarbeiten eignet.",
       className: "col-span-12 lg:col-span-4",
       imageHeight: "h-[400px]",
       bgColor: "bg-[#E6E0F4]",
     },
     {
-      title: "Holzschleifen",
+      title: "Dekorationen",
       description:
-        "Edle Holzschleifen und handgeknüpfte Bänder verleihen jedem Stück einen besonderen Charme",
+        "Jedes Stück ist ein Unikat und entsteht in liebevoller Handarbeit. Ob schlichte Eleganz, rustikaler Charme oder verspielte Details.",
       className: "col-span-12 lg:col-span-8",
       imageHeight: "h-[500px]",
       bgColor: "bg-[#FFB5C2]",
     },
-    // Row 2
-    {
-      title: "Dekorationen",
-      description:
-        "Hochwertige Verzierungen aus natürlichen Materialien wie Trockenblumen und Naturperlen",
-      className: "col-span-12 lg:col-span-6",
-      imageHeight: "h-[600px]",
-      bgColor: "bg-[#C8E6C1]",
-    },
-    {
-      title: "Personalisierung",
-      description:
-        "Individuelle Gestaltung nach Ihren Wünschen - von der Farbwahl bis zum Design",
-      className: "col-span-12 lg:col-span-6",
-      imageHeight: "h-[600px]",
-      bgColor: "bg-[#FFE5A3]",
-    },
-    // Row 3
-    {
-      title: "Qualität",
-      description:
-        "Erstklassige Materialien und sorgfältige Verarbeitung für langanhaltende Freude",
-      className: "col-span-12",
-      imageHeight: "h-[400px]",
-      bgColor: "bg-[#B5D8E6]",
-    },
   ];
 
   return (
-    <section ref={containerRef} className="relative w-full ">
+    <section ref={containerRef} className="relative w-full">
+      <h2 className="relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-sans text-center mb-8">
+        <span className="text-soft-black font-sans">
+          Meine <span className="text-primary">Kreationen</span>
+        </span>
+      </h2>
       <motion.div
         className="absolute top-20 left-[20%] w-64 h-64 rounded-full bg-primary/30 blur-3xl"
         style={{
@@ -278,6 +250,7 @@ export const ProductSequence = () => {
             transition={{ duration: 0.5 }}
             className="container mx-auto px-4 py-16 w-full"
           >
+            {/* Restored Bento Grid Layout */}
             <div className="grid grid-cols-12 gap-4 md:gap-6">
               {features.map((feature, index) => (
                 <motion.div
@@ -286,7 +259,7 @@ export const ProductSequence = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`${feature.className}  p-6 rounded-3xl transform rotate-1`}
+                  className={`${feature.className} p-6 rounded-3xl transform rotate-1`}
                   style={{
                     backgroundImage: `
                       linear-gradient(#e5e7eb 1px, transparent 1px),
@@ -297,29 +270,53 @@ export const ProductSequence = () => {
                       "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
                   }}
                 >
+                  {/* Paper holes */}
                   <div className="absolute left-8 top-1/3 w-6 h-6 rounded-full bg-gray-100 shadow-inner border border-gray-200" />
                   <div className="absolute left-8 top-2/3 w-6 h-6 rounded-full bg-gray-100 shadow-inner border border-gray-200" />
 
                   <h2 className="text-primary text-3xl font-medium mb-4 font-hand">
                     {feature.title}
                   </h2>
+
+                  {/* Swiper Cards Container for Images */}
                   <div
-                    className={`relative ${feature.imageHeight} rounded-2xl overflow-hidden`}
+                    className={`relative ${feature.imageHeight} rounded-2xl overflow-hidden mb-4`}
                   >
-                    <div className="relative w-full h-full p-4 bg-white rounded-xl shadow-[4px_4px_10px_rgba(0,0,0,0.1)]">
-                      <div className="relative w-full h-full rounded-lg overflow-hidden border-[6px] border-white shadow-inner">
-                        <Image
-                          src={
-                            images[(currentImageIndex + index) % images.length]
-                          }
-                          alt={`${feature.title} example`}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                    </div>
+                    <Swiper
+                      effect={"cards"}
+                      grabCursor={true}
+                      modules={[EffectCards, Autoplay]}
+                      autoplay={{
+                        delay: 3000 + index * 500, // Stagger the autoplay timing
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: true,
+                      }}
+                      cardsEffect={{
+                        rotate: true,
+                        perSlideRotate: 6,
+                        perSlideOffset: 6,
+                        slideShadows: true,
+                      }}
+                      className="w-full h-full image-swiper"
+                    >
+                      {images.map((image, imgIndex) => (
+                        <SwiperSlide key={imgIndex}>
+                          <div className="relative w-full h-full p-2 bg-white rounded-xl shadow-[4px_4px_10px_rgba(0,0,0,0.1)]">
+                            <div className="relative w-full h-full rounded-lg overflow-hidden border-[6px] border-white shadow-inner">
+                              <Image
+                                src={image}
+                                alt={`${feature.title} example ${imgIndex + 1}`}
+                                fill
+                                className="object-cover"
+                              />
+                            </div>
+                          </div>
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
                   </div>
-                  <p className="text-soft-black mt-4 font-hand text-lg">
+
+                  <p className="text-soft-black font-hand text-lg">
                     {feature.description}
                   </p>
                 </motion.div>
@@ -328,6 +325,27 @@ export const ProductSequence = () => {
           </motion.div>
         )}
       </div>
+
+      <style jsx global>{`
+        .image-swiper {
+          border-radius: 16px;
+        }
+
+        .image-swiper .swiper-slide {
+          background: transparent;
+          border-radius: 16px;
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-swiper .swiper-slide-shadow-cards {
+          background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.05) 0%,
+            rgba(0, 0, 0, 0.2) 100%
+          );
+          border-radius: 16px;
+        }
+      `}</style>
     </section>
   );
 };
