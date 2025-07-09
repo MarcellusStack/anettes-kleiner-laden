@@ -12,3 +12,7 @@
   --color-primary: #14c38e;
   --color-soft-black: #1a1a1a;
 }
+
+html {
+  scroll-behavior: smooth;
+}

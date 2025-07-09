@@ -53,8 +53,9 @@ export const MyWork = () => {
     <section
       ref={sectionRef}
       className="relative flex flex-col items-center gap-5 md:gap-10 container mx-auto px-4 md:px-10 min-h-[50vh] md:min-h-screen overflow-hidden pb-10"
+      id="my-work"
     >
-      <h2 className="relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-sans text-center">
+      <h2 className="relative text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-sans text-center">
         <span className="text-soft-black font-sans">
           Meine <span className="text-primary">Arbeit</span>
         </span>
@@ -90,7 +91,7 @@ export const MyWork = () => {
         style={{ y: yTransform, zIndex: 1 }}
       >
         <motion.div
-          className="relative w-full bg-white rounded-lg shadow-lg p-4 md:p-8 transform rotate-1"
+          className="relative w-full bg-white rounded-lg shadow-lg p-4 md:p-8 transform -rotate-1"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
