@@ -33,11 +33,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${gochiHand.variable} antialiased `}
+        className={`${geistSans.variable} ${geistMono.variable} ${gochiHand.variable} antialiased overflow-x-hidden`}
       >
         <ReactLenis root options={{ smoothWheel: true }}>
           <LoadingScreen />
-          {children}
+          <div className="min-h-screen flex flex-col">{children}</div>
         </ReactLenis>
       </body>
     </html>

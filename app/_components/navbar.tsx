@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "motion/react";
+import Link from "next/link";
 import { useState } from "react";
 
 export const Navbar = () => {
@@ -75,8 +76,7 @@ export const Navbar = () => {
               >
                 <div className="relative overflow-hidden">
                   <div className="flex flex-col items-center space-y-4 relative z-10 py-6">
-                    <motion.a
-                      href="#"
+                    <motion.div
                       initial={{ x: -50, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       exit={{ x: -50, opacity: 0 }}
@@ -87,12 +87,15 @@ export const Navbar = () => {
                         mass: 0.8,
                         delay: 0.2,
                       }}
-                      className="text-center text-soft-black font-bold hover:text-primary text-2xl font-sans"
                     >
-                      Meine Kreationen
-                    </motion.a>
-                    <motion.a
-                      href="#"
+                      <Link
+                        href="#my-creations"
+                        className="text-center text-soft-black font-bold hover:text-primary text-2xl font-sans"
+                      >
+                        Meine Kreationen
+                      </Link>
+                    </motion.div>
+                    <motion.div
                       initial={{ x: -50, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       exit={{ x: -50, opacity: 0 }}
@@ -103,12 +106,15 @@ export const Navbar = () => {
                         mass: 0.8,
                         delay: 0.3,
                       }}
-                      className="text-center text-soft-black font-bold hover:text-primary text-2xl font-sans"
                     >
-                      Meine Arbeit
-                    </motion.a>
-                    <motion.a
-                      href="#"
+                      <Link
+                        href="#my-work"
+                        className="text-center text-soft-black font-bold hover:text-primary text-2xl font-sans"
+                      >
+                        Meine Arbeit
+                      </Link>
+                    </motion.div>
+                    <motion.div
                       initial={{ x: -50, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       exit={{ x: -50, opacity: 0 }}
@@ -119,10 +125,14 @@ export const Navbar = () => {
                         mass: 0.8,
                         delay: 0.4,
                       }}
-                      className="text-center text-soft-black font-bold hover:text-primary text-2xl font-sans"
                     >
-                      Kontakt
-                    </motion.a>
+                      <Link
+                        href="#contact"
+                        className="text-center text-soft-black font-bold hover:text-primary text-2xl font-sans"
+                      >
+                        Kontakt
+                      </Link>
+                    </motion.div>
                   </div>
                 </div>
               </motion.div>

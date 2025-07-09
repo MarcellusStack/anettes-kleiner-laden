@@ -2,7 +2,6 @@
 import { Navbar } from "./_components/navbar";
 import { Header } from "./_components/header";
 import { ProductSequence } from "./_components/product-sequence";
-import { Marquee } from "./_components/marquee";
 import { MyWork } from "./_components/my-work";
 import { Footer } from "./_components/footer";
 
