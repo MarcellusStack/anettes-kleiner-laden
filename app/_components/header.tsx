@@ -45,9 +45,6 @@ export const Header = () => {
     shapeSpringConfig
   );
 
-  // Keep blur until we start scrolling more
-  const blurValue = useTransform(smoothProgress, [0, 0.4], [2.5, 0]);
-
   // More spread out card transforms
   const card1Transform = {
     x: useTransform(smoothProgress, [0, 1], [0, 400]),
@@ -138,7 +135,7 @@ export const Header = () => {
       </h1>
       <Link
         href="#my-creations"
-        className="cursor-pointer text-xl py-2 px-8 border bg-soft-black border-soft-black hover:bg-transparent hover:text-soft-black text-white  transition-colors z-50"
+        className="cursor-pointer text-xl py-2 px-8 rounded-full border-2 bg-soft-black border-soft-black hover:bg-transparent hover:text-soft-black text-white  transition-colors z-50"
       >
         Meine Kreationen
       </Link>
@@ -198,7 +195,6 @@ export const Header = () => {
             x: card1Transform.x,
             y: card1Transform.y,
             rotate: card1Transform.rotate,
-            filter: useTransform(blurValue, (value) => `blur(${value}px)`),
             opacity: opacityValue,
           }}
         >
@@ -231,7 +227,6 @@ export const Header = () => {
             x: card2Transform.x,
             y: card2Transform.y,
             rotate: card2Transform.rotate,
-            filter: useTransform(blurValue, (value) => `blur(${value}px)`),
             opacity: opacityValue,
           }}
         >
@@ -264,7 +259,6 @@ export const Header = () => {
             x: card3Transform.x,
             y: card3Transform.y,
             rotate: card3Transform.rotate,
-            filter: useTransform(blurValue, (value) => `blur(${value}px)`),
             opacity: opacityValue,
           }}
         >
@@ -297,7 +291,6 @@ export const Header = () => {
             x: card4Transform.x,
             y: card4Transform.y,
             rotate: card4Transform.rotate,
-            filter: useTransform(blurValue, (value) => `blur(${value}px)`),
             opacity: opacityValue,
           }}
         >
@@ -330,7 +323,6 @@ export const Header = () => {
             x: card5Transform.x,
             y: card5Transform.y,
             rotate: card5Transform.rotate,
-            filter: useTransform(blurValue, (value) => `blur(${value}px)`),
             opacity: opacityValue,
           }}
         >
