@@ -4,6 +4,7 @@ import "./globals.css";
 import { LoadingScreen } from "./_components/loading-screen";
 import { ReactLenis } from "lenis/react";
 import { Footer } from "./_components/footer";
+import { Navbar } from "./_components/navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,6 +40,7 @@ export default function RootLayout({
         <ReactLenis root options={{ smoothWheel: true }}>
           <LoadingScreen />
           <div className="min-h-screen flex flex-col">
+            <Navbar />
             <main className="flex-1">{children}</main>
             <Footer />
           </div>
