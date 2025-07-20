@@ -1,9 +1,40 @@
+"use client";
 import Link from "next/link";
+import { motion, useScroll, useTransform, useSpring } from "motion/react";
+import { useRef } from "react";
 
 export const Footer = () => {
+  const footerRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: footerRef,
+    offset: ["start 0.8", "start 0.3"],
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 200,
+    damping: 20,
+    mass: 0.2,
+    restSpeed: 0.5,
+    restDelta: 0.01,
+  });
+
+  // Animation values - slightly more noticeable
+  const y = useTransform(smoothProgress, [0, 1], [50, 0]);
+  const scale = useTransform(smoothProgress, [0, 1], [1.05, 1]);
+  const opacity = useTransform(smoothProgress, [0, 0.5], [0.7, 1]);
+
   return (
     <div className="px-4 py-8 md:px-8 lg:px-16">
-      <footer className="bg-primary text-white rounded-3xl px-6 py-12 md:p-16">
+      <motion.footer
+        ref={footerRef}
+        style={{
+          y,
+          scale,
+          opacity,
+        }}
+        className="bg-primary text-white rounded-3xl px-6 py-12 md:p-16"
+      >
         <div className="container mx-auto">
           {/* Top Section - Navigation */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-12 mb-16">
@@ -80,7 +111,7 @@ export const Footer = () => {
             </div>
           </div>
         </div>
-      </footer>
+      </motion.footer>
     </div>
   );
 };
