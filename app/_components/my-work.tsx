@@ -160,7 +160,7 @@ export const MyWork = () => {
                 whileInView={{ pathLength: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{
-                  duration: 1.0,
+                  duration: 0.6,
                   delay: 0.7,
                   ease: "easeInOut",
                 }}
