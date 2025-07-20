@@ -4,7 +4,6 @@ import { Header } from "./_components/header";
 import { ProductSequence } from "./_components/product-sequence";
 import { MyWork } from "./_components/my-work";
 import { Contact } from "./_components/contact";
-import { Footer } from "./_components/footer";
 
 export default function Home() {
   return (
@@ -29,7 +28,6 @@ export default function Home() {
       /> */}
       <div className="mt-16 md:mt-36" />
       <Contact />
-      <Footer />
     </div>
   );
 }
