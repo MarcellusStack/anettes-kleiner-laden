@@ -319,52 +319,171 @@ export const ProductSequence = () => {
                   </h2>
 
                   {/* Swiper Cards Container for Images */}
-                  <div
-                    className={`relative ${feature.imageHeight} rounded-2xl overflow-hidden mb-4`}
-                  >
-                    <Swiper
-                      effect={"cards"}
-                      grabCursor={true}
-                      modules={[EffectCards, Autoplay]}
-                      autoplay={{
-                        delay: 3000 + index * 500, // Stagger the autoplay timing
-                        disableOnInteraction: false,
-                        pauseOnMouseEnter: true,
-                      }}
-                      cardsEffect={{
-                        rotate: true,
-                        perSlideRotate: 6,
-                        perSlideOffset: 6,
-                        slideShadows: true,
-                      }}
-                      className="w-full h-full image-swiper"
+                  {index === 0 ? (
+                    // First feature - single image slider
+                    <div
+                      className={`relative ${feature.imageHeight} rounded-2xl overflow-hidden mb-4`}
                     >
-                      {feature.images.map((image, imgIndex) => (
-                        <SwiperSlide key={imgIndex}>
-                          <div className="relative w-full h-full p-2 bg-white rounded-xl shadow-[4px_4px_10px_rgba(0,0,0,0.1)]">
-                            <div className="relative w-full h-full rounded-lg overflow-hidden border-[6px] border-white shadow-inner">
-                              <Image
-                                urlEndpoint={
-                                  process.env.NEXT_PUBLIC_IMAGEKIT_URL
-                                }
-                                src={image}
-                                alt={`${feature.title} example ${imgIndex + 1}`}
-                                transformation={[
-                                  {
-                                    width: index == 0 ? 400 : 1200,
-                                    height: index == 0 ? 375 : 720,
-                                  },
-                                ]}
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                fill={true}
-                                className="object-fit"
-                              />
+                      <Swiper
+                        effect={"cards"}
+                        grabCursor={true}
+                        modules={[EffectCards, Autoplay]}
+                        autoplay={{
+                          delay: 3000 + index * 500,
+                          disableOnInteraction: false,
+                          pauseOnMouseEnter: true,
+                        }}
+                        cardsEffect={{
+                          rotate: true,
+                          perSlideRotate: 6,
+                          perSlideOffset: 6,
+                          slideShadows: true,
+                        }}
+                        className="w-full h-full image-swiper"
+                      >
+                        {feature.images.map((image, imgIndex) => (
+                          <SwiperSlide key={imgIndex}>
+                            <div className="relative w-full h-full p-2 bg-white rounded-xl shadow-[4px_4px_10px_rgba(0,0,0,0.1)]">
+                              <div className="relative w-full h-full rounded-lg overflow-hidden border-[6px] border-white shadow-inner">
+                                <Image
+                                  urlEndpoint={
+                                    process.env.NEXT_PUBLIC_IMAGEKIT_URL
+                                  }
+                                  src={image}
+                                  alt={`${feature.title} example ${
+                                    imgIndex + 1
+                                  }`}
+                                  transformation={[
+                                    {
+                                      width: 400,
+                                      height: 375,
+                                    },
+                                  ]}
+                                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                  fill={true}
+                                  className="object-fit"
+                                />
+                              </div>
                             </div>
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+                    </div>
+                  ) : (
+                    // Second feature - multiple image sliders based on screen size
+                    <div className="mb-4">
+                      {/* Mobile: 1 slider */}
+                      <div className="block sm:hidden">
+                        <div
+                          className={`relative ${feature.imageHeight} rounded-2xl overflow-hidden`}
+                        >
+                          <Swiper
+                            effect={"cards"}
+                            grabCursor={true}
+                            modules={[EffectCards, Autoplay]}
+                            autoplay={{
+                              delay: 3000,
+                              disableOnInteraction: false,
+                              pauseOnMouseEnter: true,
+                            }}
+                            cardsEffect={{
+                              rotate: true,
+                              perSlideRotate: 6,
+                              perSlideOffset: 6,
+                              slideShadows: true,
+                            }}
+                            className="w-full h-full image-swiper"
+                          >
+                            {feature.images.map((image, imgIndex) => (
+                              <SwiperSlide key={imgIndex}>
+                                <div className="relative w-full h-full p-2 bg-white rounded-xl shadow-[4px_4px_10px_rgba(0,0,0,0.1)]">
+                                  <div className="relative w-full h-full rounded-lg overflow-hidden border-[6px] border-white shadow-inner">
+                                    <Image
+                                      urlEndpoint={
+                                        process.env.NEXT_PUBLIC_IMAGEKIT_URL
+                                      }
+                                      src={image}
+                                      alt={`${feature.title} example ${
+                                        imgIndex + 1
+                                      }`}
+                                      transformation={[
+                                        {
+                                          width: 400,
+                                          height: 500,
+                                        },
+                                      ]}
+                                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                      fill={true}
+                                      className="object-fit"
+                                    />
+                                  </div>
+                                </div>
+                              </SwiperSlide>
+                            ))}
+                          </Swiper>
+                        </div>
+                      </div>
+
+                      {/* Desktop and Tablet: 2 sliders */}
+                      <div className="hidden sm:grid grid-cols-2 gap-4">
+                        {[0, 1].map((sliderIndex) => (
+                          <div
+                            key={sliderIndex}
+                            className={`relative ${feature.imageHeight} rounded-2xl overflow-hidden`}
+                          >
+                            <Swiper
+                              effect={"cards"}
+                              grabCursor={true}
+                              modules={[EffectCards, Autoplay]}
+                              autoplay={{
+                                delay: 3000 + sliderIndex * 800,
+                                disableOnInteraction: false,
+                                pauseOnMouseEnter: true,
+                              }}
+                              cardsEffect={{
+                                rotate: true,
+                                perSlideRotate: 6,
+                                perSlideOffset: 6,
+                                slideShadows: true,
+                              }}
+                              className="w-full h-full image-swiper"
+                            >
+                              {feature.images
+                                .filter(
+                                  (_, imgIndex) => imgIndex % 2 === sliderIndex
+                                )
+                                .map((image, imgIndex) => (
+                                  <SwiperSlide key={imgIndex}>
+                                    <div className="relative w-full h-full p-2 bg-white rounded-xl shadow-[4px_4px_10px_rgba(0,0,0,0.1)]">
+                                      <div className="relative w-full h-full rounded-lg overflow-hidden border-[6px] border-white shadow-inner">
+                                        <Image
+                                          urlEndpoint={
+                                            process.env.NEXT_PUBLIC_IMAGEKIT_URL
+                                          }
+                                          src={image}
+                                          alt={`${feature.title} example ${
+                                            imgIndex + 1
+                                          }`}
+                                          transformation={[
+                                            {
+                                              width: 600,
+                                              height: 360,
+                                            },
+                                          ]}
+                                          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 40vw, 50vw"
+                                          fill={true}
+                                          className="object-fit"
+                                        />
+                                      </div>
+                                    </div>
+                                  </SwiperSlide>
+                                ))}
+                            </Swiper>
                           </div>
-                        </SwiperSlide>
-                      ))}
-                    </Swiper>
-                  </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   <p className="text-soft-black font-hand text-lg sm:text-xl">
                     {feature.description}
