@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import { IconPencil } from "@tabler/icons-react";
+import { AnimatedTitle } from "./animated-title";
 
 export const MyWork = () => {
   const sectionRef = useRef(null);
@@ -55,9 +56,9 @@ export const MyWork = () => {
       className="relative flex flex-col items-center gap-5 md:gap-10 container mx-auto px-4 md:px-10 min-h-[50vh] md:min-h-screen overflow-hidden pb-10"
       id="my-work"
     >
-      <h2 className="relative text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-sans text-center">
+      <h2 className="relative text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-sans text-center ">
         <span className="text-soft-black font-sans">
-          Meine <span className="text-primary">Arbeit</span>
+          Meine <AnimatedTitle text="Arbeit" className="text-primary" />
         </span>
       </h2>
       {/* Decorative background shapes with enhanced animations */}

@@ -3,6 +3,7 @@ import { IconArrowDown } from "@tabler/icons-react";
 import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import { Image } from "@imagekit/next";
 import Link from "next/link";
+import { AnimatedTitle } from "./animated-title";
 
 export const Header = () => {
   const headerRef = useRef(null);
@@ -153,13 +154,24 @@ export const Header = () => {
 
       <h1 className="relative text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-sans flex flex-col items-center text-center">
         <span className="text-soft-black font-sans">
-          Handgemachte <span className="text-primary">Deko</span>
+          Handgemachte{" "}
+          <AnimatedTitle text="Deko" className="text-primary" delay={1.3} />
         </span>
         <span className="font-sans text-soft-black">
-          aus <span className="text-primary">Keraflott</span>
+          aus{" "}
+          <AnimatedTitle
+            text="Keraflott"
+            className="text-primary"
+            delay={1.3}
+          />
         </span>
         <span className="font-sans text-soft-black">
-          mit Liebe <span className="text-primary">gestaltet</span>
+          mit Liebe{" "}
+          <AnimatedTitle
+            text="gestaltet"
+            className="text-primary"
+            delay={1.3}
+          />
         </span>
       </h1>
       <Link
