@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import { useRef } from "react";
+import { Image } from "@imagekit/next";
 
 export const Footer = () => {
   const footerRef = useRef(null);
@@ -33,44 +34,65 @@ export const Footer = () => {
           scale,
           opacity,
         }}
-        className="bg-primary text-white rounded-3xl px-6 py-12 md:p-16"
+        className="bg-primary text-white rounded-3xl px-4 py-8 md:px-8 md:py-12 lg:px-12 lg:py-16"
       >
         <div className="container mx-auto">
-          {/* Top Section - Navigation */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-12 mb-16">
-            {/* Empty columns for spacing on larger screens */}
-            <div className="hidden lg:block"></div>
-            <div className="hidden lg:block"></div>
+          {/* Top Section - Navigation with Image */}
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 mb-12">
+            {/* Image Section - Left */}
+            <div className="flex-1 flex justify-center lg:justify-start">
+              <div className="relative w-full lg:w-2/3 h-56 md:h-64 lg:h-96 rounded-2xl overflow-hidden">
+                <Image
+                  urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL}
+                  src="20240815_194621.jpg"
+                  alt="Anettes kleiner Laden"
+                  transformation={[
+                    {
+                      width: 800,
+                      height: 820,
+                    },
+                  ]}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 66vw, 800px"
+                  fill={true}
+                  className="object-cover rounded-2xl"
+                  loading="lazy"
+                  placeholder="blur"
+                  blurDataURL={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/tr:w-10,h-10,bl-10/20240815_194621.jpg`}
+                />
+              </div>
+            </div>
 
-            {/* Navigation Links */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Seiten</h3>
-              <ul className="space-y-4">
-                <li>
-                  <Link
-                    href="#my-creations"
-                    className="text-white/80 hover:text-white transition-colors text-lg"
-                  >
-                    Meine Kreationen
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#my-work"
-                    className="text-white/80 hover:text-white transition-colors text-lg"
-                  >
-                    Meine Arbeit
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#contact"
-                    className="text-white/80 hover:text-white transition-colors text-lg"
-                  >
-                    Kontakt
-                  </Link>
-                </li>
-              </ul>
+            {/* Navigation Links - Right */}
+            <div className="flex justify-start lg:justify-end">
+              <div>
+                <h3 className="text-lg font-semibold mb-6">Seiten</h3>
+                <ul className="space-y-4">
+                  <li>
+                    <Link
+                      href="#my-creations"
+                      className="text-white/80 hover:text-white transition-colors text-lg"
+                    >
+                      Meine Kreationen
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="#my-work"
+                      className="text-white/80 hover:text-white transition-colors text-lg"
+                    >
+                      Meine Arbeit
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="#contact"
+                      className="text-white/80 hover:text-white transition-colors text-lg"
+                    >
+                      Kontakt
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
 
