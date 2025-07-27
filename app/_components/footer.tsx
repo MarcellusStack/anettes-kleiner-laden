@@ -44,7 +44,7 @@ export const Footer = () => {
 
             {/* Navigation Links */}
             <div>
-              <h4 className="text-lg font-semibold mb-6">Seiten</h4>
+              <h3 className="text-lg font-semibold mb-6">Seiten</h3>
               <ul className="space-y-4">
                 <li>
                   <Link

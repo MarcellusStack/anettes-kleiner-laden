@@ -102,6 +102,7 @@ export const Navbar = () => {
             <motion.button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden relative w-12 h-12 rounded-full hover:bg-primary/80 bg-primary flex flex-col items-center justify-center cursor-pointer mr-2"
+              aria-label="Menü öffnen"
             >
               <motion.div
                 animate={{
