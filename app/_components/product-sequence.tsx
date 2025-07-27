@@ -14,6 +14,7 @@ import { EffectCards, Autoplay } from "swiper/modules";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-cards";
+import { AnimatedTitle } from "./animated-title";
 
 export const ProductSequence = () => {
   const containerRef = useRef(null);
@@ -142,7 +143,7 @@ export const ProductSequence = () => {
     <section ref={containerRef} className="relative w-full" id="my-creations">
       <h2 className="relative text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-sans text-center mb-8">
         <span className="text-soft-black font-sans">
-          Meine <span className="text-primary">Kreationen</span>
+          Meine <AnimatedTitle text="Kreationen" className="text-primary" />
         </span>
       </h2>
       {/* Decorative background shapes with enhanced scroll animations */}

@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import { IconPencil } from "@tabler/icons-react";
+import { AnimatedTitle } from "./animated-title";
 
 export const MyWork = () => {
   const sectionRef = useRef(null);
@@ -55,9 +56,9 @@ export const MyWork = () => {
       className="relative flex flex-col items-center gap-5 md:gap-10 container mx-auto px-4 md:px-10 min-h-[50vh] md:min-h-screen overflow-hidden pb-10"
       id="my-work"
     >
-      <h2 className="relative text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-sans text-center">
+      <h2 className="relative text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold font-sans text-center ">
         <span className="text-soft-black font-sans">
-          Meine <span className="text-primary">Arbeit</span>
+          Meine <AnimatedTitle text="Arbeit" className="text-primary" />
         </span>
       </h2>
       {/* Decorative background shapes with enhanced animations */}
@@ -111,7 +112,7 @@ export const MyWork = () => {
           <div className="absolute left-8 top-2/3 w-6 h-6 rounded-full bg-gray-100 shadow-inner border border-gray-200" />
 
           {/* Title with underline animation */}
-          <div className="relative mb-4 md:mb-8">
+          <div className="relative mb-4 md:mb-8 px-8 md:px-0">
             <motion.h2
               className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold font-hand text-primary text-center"
               initial={{ opacity: 0, y: 20 }}
@@ -137,19 +138,19 @@ export const MyWork = () => {
               ))}
             </motion.h2>
 
-            {/* Realistic scribbled underline */}
+            {/* Realistic scribbled underline - responsive width */}
             <motion.svg
               className="absolute -bottom-2 left-1/2 transform -translate-x-1/2"
-              width="350"
+              width="280"
               height="20"
-              viewBox="0 0 350 20"
+              viewBox="0 0 280 20"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.2, delay: 0.6 }}
             >
               <motion.path
-                d="M 5 12 Q 20 8 35 10 T 65 9 Q 85 7 105 11 T 135 10 Q 155 8 175 12 T 205 11 Q 225 9 245 13 T 275 12 Q 295 10 315 14 T 345 13"
+                d="M 5 12 Q 15 8 30 10 T 55 9 Q 70 7 85 11 T 110 10 Q 125 8 140 12 T 165 11 Q 180 9 195 13 T 220 12 Q 235 10 250 14 T 275 13"
                 stroke="currentColor"
                 strokeWidth="2.5"
                 className="text-primary"
@@ -188,7 +189,7 @@ export const MyWork = () => {
 
               {/* Small pen stroke marks for extra realism */}
               <motion.circle
-                cx="15"
+                cx="12"
                 cy="10"
                 r="0.5"
                 fill="currentColor"
@@ -199,7 +200,7 @@ export const MyWork = () => {
                 transition={{ duration: 0.1, delay: 0.9 }}
               />
               <motion.circle
-                cx="180"
+                cx="140"
                 cy="11"
                 r="0.3"
                 fill="currentColor"
@@ -210,7 +211,7 @@ export const MyWork = () => {
                 transition={{ duration: 0.1, delay: 1.3 }}
               />
               <motion.circle
-                cx="320"
+                cx="260"
                 cy="13"
                 r="0.4"
                 fill="currentColor"
@@ -229,10 +230,10 @@ export const MyWork = () => {
                 left: "50%",
                 bottom: "-30px",
               }}
-              initial={{ opacity: 0, x: -175, rotate: -15 }}
+              initial={{ opacity: 0, x: -140, rotate: -15 }}
               whileInView={{
                 opacity: [0, 1, 1, 0],
-                x: 175,
+                x: 140,
                 rotate: 15,
                 transition: {
                   duration: 1.0,
@@ -252,7 +253,7 @@ export const MyWork = () => {
 
           {/* Content with simple fade-up animation */}
           <motion.div
-            className="text-center text-soft-black font-hand text-lg md:text-2xl leading-[2] md:leading-[2.5] space-y-6"
+            className="text-center text-soft-black font-hand text-lg md:text-2xl leading-[2] md:leading-[2.5] space-y-6 px-8 md:px-0"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
