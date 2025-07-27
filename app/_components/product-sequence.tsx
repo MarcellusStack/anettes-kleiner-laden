@@ -362,7 +362,10 @@ export const ProductSequence = () => {
                                   ]}
                                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                   fill={true}
-                                  className="object-fit"
+                                  className="object-cover"
+                                  loading="lazy"
+                                  placeholder="blur"
+                                  blurDataURL={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/tr:w-10,h-10,bl-10/${image}`}
                                 />
                               </div>
                             </div>
@@ -415,7 +418,10 @@ export const ProductSequence = () => {
                                       ]}
                                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                       fill={true}
-                                      className="object-fit"
+                                      className="object-cover"
+                                      loading="lazy"
+                                      placeholder="blur"
+                                      blurDataURL={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/tr:w-10,h-10,bl-10/${image}`}
                                     />
                                   </div>
                                 </div>
@@ -467,13 +473,16 @@ export const ProductSequence = () => {
                                           }`}
                                           transformation={[
                                             {
-                                              width: 600,
-                                              height: 360,
+                                              width: 500,
+                                              height: 400,
                                             },
                                           ]}
                                           sizes="(max-width: 768px) 50vw, (max-width: 1200px) 40vw, 50vw"
                                           fill={true}
-                                          className="object-fit"
+                                          className="object-cover"
+                                          loading="lazy"
+                                          placeholder="blur"
+                                          blurDataURL={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/tr:w-10,h-10,bl-10/${image}`}
                                         />
                                       </div>
                                     </div>

@@ -263,9 +263,10 @@ export const Header = () => {
                   ]}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   fill={true}
-                  className="object-fit"
-                  loading={index === 0 ? "eager" : "lazy"}
-                  fetchPriority={index === 0 ? "high" : "auto"}
+                  className="object-cover"
+                  loading="lazy"
+                  placeholder="blur"
+                  blurDataURL={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/tr:w-10,h-10,bl-10/${card.src}`}
                 />
               </div>
             </div>
